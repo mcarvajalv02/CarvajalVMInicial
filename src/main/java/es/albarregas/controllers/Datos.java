@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PORTATIL
  */
-@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
-public class Controlador extends HttpServlet {
+@WebServlet(name = "Datos", urlPatterns = {"/Datos"})
+public class Datos extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,16 +34,25 @@ public class Controlador extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
+            out.println("<title>Servlet Datos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Datos at " + request.getContextPath() + "</h1>");
             out.println("<h2>Llamada realizada por el m&eacute;todo " + request.getMethod() + "</h2>");
             out.println("<ul><li>Para volver al men&uacute; <a href=\"index.html\">pulse</a></li></ul>");
             Enumeration<String> parametros = request.getParameterNames();
             while(parametros.hasMoreElements()){
                 String nombre = parametros.nextElement();
-                out.println("<p>El valor del par&aacute;metro " + nombre + " es " + request.getParameter(nombre) + "</p>");
+                 String[] valores = request.getParameterValues(nombre); // Obtener todos los valores del parámetro
+                if (valores != null) {
+                    // Si hay múltiples valores, unirlos con comas
+                    String concatenados = String.join(", ", valores);
+                    out.println("<p>El valor del parámetro " + nombre + " es " + concatenados + "</p>");
+                } else {
+                    // Mostrar el valor único
+                    out.println("<p>El valor del parámetro " + nombre + " es " + request.getParameter(nombre) + "</p>");
+                }
+
             }
             out.println("</body>");
             out.println("</html>");
