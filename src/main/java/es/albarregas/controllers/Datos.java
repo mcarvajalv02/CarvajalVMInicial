@@ -1,4 +1,3 @@
-
 package es.albarregas.controllers;
 
 import java.io.IOException;
@@ -34,25 +33,28 @@ public class Datos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Datos</title>");            
+            out.println("<title>Servlet Datos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Datos at " + request.getContextPath() + "</h1>");
             out.println("<h2>Llamada realizada por el m&eacute;todo " + request.getMethod() + "</h2>");
             out.println("<ul><li>Para volver al men&uacute; <a href=\"index.html\">pulse</a></li></ul>");
             Enumeration<String> parametros = request.getParameterNames();
-            while(parametros.hasMoreElements()){
+            while (parametros.hasMoreElements()) {
                 String nombre = parametros.nextElement();
-                 String[] valores = request.getParameterValues(nombre); // Obtener todos los valores del parámetro
+                // Convertir la primera letra en mayúscula
+                String nombreCapitalizado = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
+                
+                nombreCapitalizado = nombreCapitalizado.replace("_"," ");
+                String[] valores = request.getParameterValues(nombre); // Obtener todos los valores del parámetro
                 if (valores != null) {
                     // Si hay múltiples valores, unirlos con comas
                     String concatenados = String.join(", ", valores);
-                    out.println("<p>El valor del parámetro " + nombre + " es " + concatenados + "</p>");
+                    out.println(nombreCapitalizado + ": " + concatenados + "<br>" + "<br>");
                 } else {
                     // Mostrar el valor único
-                    out.println("<p>El valor del parámetro " + nombre + " es " + request.getParameter(nombre) + "</p>");
+                    out.println(nombreCapitalizado + ": " + request.getParameter(nombre) + "<br>" + "<br>");
                 }
-
             }
             out.println("</body>");
             out.println("</html>");
