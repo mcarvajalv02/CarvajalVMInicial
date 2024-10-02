@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PORTATIL
  */
-@WebServlet(name = "ValidadorIntermedio", urlPatterns = {"/ValidadorIntermedio"})
-public class ValidadorIntermedio extends HttpServlet {
+@WebServlet(name = "Recordador", urlPatterns = {"/Recordador"})
+public class Recordador extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,7 +38,7 @@ public class ValidadorIntermedio extends HttpServlet {
             htmlform.append("<!DOCTYPE html>");
             htmlform.append("<html>");
             htmlform.append("<head>");
-            htmlform.append("<title>Validador Intermedio</title>");
+            htmlform.append("<title>Recordador</title>");
             htmlform.append("</head>");
             htmlform.append("<body>");
 
@@ -48,7 +48,7 @@ public class ValidadorIntermedio extends HttpServlet {
             }
 
             // Generar el formulario usando .append()
-            htmlform.append("<form action='ValidadorIntermedio' method='POST'>");
+            htmlform.append("<form action='Recordador' method='POST'>");
 
             htmlform.append("<label>Nombre: </label>");
             htmlform.append("<input type='text' name='nombre' value=''/>");
@@ -62,22 +62,10 @@ public class ValidadorIntermedio extends HttpServlet {
             htmlform.append("<input type='date' id='fecha' name='fecha_nacimiento' value=''/>");
             htmlform.append("<br><br>");
 
-            htmlform.append("<label>Sistema operativo: </label>");
-            htmlform.append("<select name='sistema_operativo' id='lt1'>");
-            htmlform.append("<option value='0' selected disabled>Elige uno...</option>");
-            htmlform.append("<option value='Windows'>Windows</option>");
-            htmlform.append("<option value='Linux'>Linux</option>");
-            htmlform.append("<option value='Mac'>Mac</option>");
-            htmlform.append("<option value='Ubuntu'>Ubuntu</option>");
-            htmlform.append("</select>");
+            htmlform.append("<label>Domicilio: </label>");
+            htmlform.append("<input type='text' id='fecha' name='domicilio' value=''/>");
             htmlform.append("<br><br>");
-
-            htmlform.append("<label>Género: </label><br>");
-            htmlform.append("<input type='radio' value='Mujer' name='sexo'/>&nbsp;&nbsp; Mujer<br>");
-            htmlform.append("<input type='radio' value='Hombre' name='sexo'/>&nbsp;&nbsp; Hombre<br>");
-            htmlform.append("<input type='radio' value='Otro' name='sexo'/>&nbsp;&nbsp; Otro<br>");
-            htmlform.append("<br>");
-
+            
             htmlform.append("<input type='submit' name='primera' value='Enviar'/>");
             htmlform.append("</form>");
 
@@ -104,37 +92,30 @@ public class ValidadorIntermedio extends HttpServlet {
         if (request.getParameter("primera") == null) {
             StringBuilder htmlform = new StringBuilder();
             PrintWriter out = response.getWriter();
-            htmlform.append("<form action='ValidadorIntermedio' method='POST'>");
+            htmlform.append("<form action='Recordador' method='POST'>");
 
             htmlform.append("<label>Nombre: </label>");
-            htmlform.append("<input type='text' name='nombre' value=''/>");
-            htmlform.append("<br><br>");
+            htmlform.append("<input type='text' name='nombre' value='")
+                    .append(request.getParameter("nombre") + "'/>");
 
             htmlform.append("<label>Apellidos: </label>");
-            htmlform.append("<input type='text' name='apellidos' value=''/>");
+            htmlform.append("<input type='text' name='apellidos' value='")
+                    .append(request.getParameter("apellidos") + "'/>");
             htmlform.append("<br><br>");
 
             htmlform.append("<label>Fecha de nacimiento: </label>");
-            htmlform.append("<input type='date' id='fecha' name='fecha_nacimiento' value=''/>");
+            htmlform.append("<input type='text' name='fecha_nacimiento' value='")
+                    .append(request.getParameter("fecha_nacimiento") + "'/>");
             htmlform.append("<br><br>");
 
-            htmlform.append("<label>Sistema operativo: </label>");
-            htmlform.append("<select name='sistema_operativo' id='lt1'>");
-            htmlform.append("<option value='0' selected disabled>Elige uno...</option>");
-            htmlform.append("<option value='Windows'>Windows</option>");
-            htmlform.append("<option value='Linux'>Linux</option>");
-            htmlform.append("<option value='Mac'>Mac</option>");
-            htmlform.append("<option value='Ubuntu'>Ubuntu</option>");
-            htmlform.append("</select>");
+            htmlform.append("<label>Domicilio: </label>");
+            htmlform.append("<input type='text' name='domicilio' value='")
+                    .append(request.getParameter("domicilio") + "'/>");
             htmlform.append("<br><br>");
 
-            htmlform.append("<label>Género: </label><br>");
-            htmlform.append("<input type='radio' value='Mujer' name='sexo'/>&nbsp;&nbsp; Mujer<br>");
-            htmlform.append("<input type='radio' value='Hombre' name='sexo'/>&nbsp;&nbsp; Hombre<br>");
-            htmlform.append("<input type='radio' value='Otro' name='sexo'/>&nbsp;&nbsp; Otro<br>");
-            htmlform.append("<br>");
 
-            htmlform.append("<input type='submit' name='primera' value='Enviar'/>");
+            
+            htmlform.append("<input type='submit' name='enviar' value='Enviar'/>");
             htmlform.append("</form>");
 
             htmlform.append("</body>");
@@ -161,7 +142,7 @@ public class ValidadorIntermedio extends HttpServlet {
             if (error) {
                 PrintWriter out = response.getWriter();
                 out.println("<h1>ERROR EN EL FORMULARIO, ESTÁ INCOMPLETO</h1>");
-                out.println("<br><form action='ValidadorIntermedio' method='GET'>");
+                out.println("<br><form action='Recordador' method='GET'>");
                 out.println("<input type='submit' value='Enviar'/>");
                 out.println("</form>");
             } else {
