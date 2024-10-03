@@ -27,7 +27,7 @@
         <div id="contenido">
             <!-- Título y fecha -->
             <h2>Calculadora</h2>
-            <p><%= Calendar.getInstance().getTime() %></p>
+            
 
             <% 
                 StringBuilder mensaje = new StringBuilder("");
@@ -40,19 +40,19 @@
                         int num2 = Integer.parseInt(request.getParameter("num2"));
 
                         switch (operacion) {
-                            case "Sumar":
+                            case "suma":
                                 resultado = sumar(num1, num2);
                                 mensaje.append("Resultado: " + resultado);
                                 break;
-                            case "Restar":
+                            case "restar":
                                 resultado = restar(num1, num2);
                                 mensaje.append("Resultado: " + resultado);
                                 break;
-                            case "Multiplicar":
+                            case "multiplicar":
                                 resultado = multiplicar(num1, num2);
                                 mensaje.append("Resultado: " + resultado);
                                 break;
-                            case "Dividir":
+                            case "dividir":
                                 if (num2 != 0) {
                                     resultado = dividir(num1, num2);
                                     mensaje.append("Resultado: " + resultado);
@@ -83,18 +83,20 @@
                         <td><label>Segundo número: </label></td>
                         <td><input type="text" name="num2"/></td>
                     </tr>
+                    <tr>
+                        <td><input type="radio" name="operacion" value="suma" checked/> Sumar</td>
+                        <td><input type="radio" name="operacion" value="restar"/> Restar</td>
+                        <td><input type="radio" name="operacion" value="multiplicar"/> Multiplicar</td>
+                        <td><input type="radio" name="operacion" value="dividir"/> Dividir</td>
+                    </tr>
                 </table>
 
-                <!-- Botones de operación en dos columnas -->
+                <!-- Botones de operación -->
                 <div class="botones">
-                    <input type="submit" name="operacion" value="Sumar"/>
-                    <input type="submit" name="operacion" value="Restar"/>
-                    <input type="submit" name="operacion" value="Multiplicar"/>
-                    <input type="submit" name="operacion" value="Dividir"/>
+                    <input type="submit" name="enviar" value="Enviar"/>
+                    <input type="reset" name="restablecer" value="Restablecer"/>
                 </div>
             </form>
-
-            <a href="<%=request.getContextPath()%>">Volver atrás...</a>
         </div>
     </body>
 </html>
