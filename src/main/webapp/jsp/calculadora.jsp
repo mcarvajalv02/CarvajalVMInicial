@@ -1,57 +1,100 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Calendar" %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta http‐equiv="Content‐Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Calculadora</title>
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/calculadora.css"/>
     </head>
     <body>
-        <%--Metodo para sumar dos numeros enteros --%>
+        
         <%!
-            public int sumar(int param1, int param2) {
-                return param1 + param2;
+            public int sumar(int num1, int num2) {
+                return num1 + num2;
+            }
+            public int restar(int num1, int num2) {
+                return num1 - num2;
+            }
+            public int multiplicar(int num1, int num2) {
+                return num1 * num2;
+            }
+            public int dividir(int num1, int num2) {
+                return num1 / num2;
             }
         %>
-        <%
-            if (request.getParameter("switch") == null) {
-        %>
-        <form method="post" action="calculadora.jsp" >
-            <input type="hidden" name="switch" value="true">
-            <table>
-                <tr>
-                    <td>Primer número:</td>
-                    <td><input name="param1"></td>
-                </tr>
-                <tr>
-                    <td>Segundo número:</td>
-                    <td><input name="param2"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Sumar"></td>
-                </tr>
-            </table>
-        </form>
-        <%
-        } else {
-            try {
-                int param1 = Integer.parseInt(request.getParameter("param1"));
-                int param2 = Integer.parseInt(request.getParameter("param2"));
-                int result = param1 + param2;
-        %>
-        <p>El resultado de la suma es: <%= sumar(param1, param2)%></p>
-        <%
-        } catch (NumberFormatException ex) {
-        %>
-        <p>Alguno de los números no contenía dígitos válidos...</p>
-        <%
-            }
-        %>
-        <p><%= Calendar.getInstance().getTime()%></p>
-        <a href="calculadora.jsp">Volver atrás...</a>
-        <%
-            }
-        %>
+
+        <div id="contenido">
+            <!-- Título y fecha -->
+            <h2>Calculadora</h2>
+            <p><%= Calendar.getInstance().getTime() %></p>
+
+            <% 
+                StringBuilder mensaje = new StringBuilder("");
+                int resultado = 0;
+                String operacion = request.getParameter("operacion");
+
+                if (request.getParameter("num1") != null && request.getParameter("num2") != null && operacion != null) {
+                    try {
+                        int num1 = Integer.parseInt(request.getParameter("num1"));
+                        int num2 = Integer.parseInt(request.getParameter("num2"));
+
+                        switch (operacion) {
+                            case "Sumar":
+                                resultado = sumar(num1, num2);
+                                mensaje.append("Resultado: " + resultado);
+                                break;
+                            case "Restar":
+                                resultado = restar(num1, num2);
+                                mensaje.append("Resultado: " + resultado);
+                                break;
+                            case "Multiplicar":
+                                resultado = multiplicar(num1, num2);
+                                mensaje.append("Resultado: " + resultado);
+                                break;
+                            case "Dividir":
+                                if (num2 != 0) {
+                                    resultado = dividir(num1, num2);
+                                    mensaje.append("Resultado: " + resultado);
+                                } else {
+                                    mensaje.append("No se puede dividir por cero.");
+                                }
+                                break;
+                            default:
+                                mensaje.append("Operación no válida.");
+                        }
+                    } catch (NumberFormatException e) {
+                        mensaje.append("Por favor ingrese números válidos.");
+                    }
+                }
+            %>
+
+            <!-- Mostrar el resultado -->
+            <p><%= mensaje.toString() %></p>
+
+            <!-- Formulario de la calculadora -->
+            <form action="calculadora.jsp" method="post">
+                <table>
+                    <tr>
+                        <td><label>Primer número: </label></td>
+                        <td><input type="text" name="num1"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Segundo número: </label></td>
+                        <td><input type="text" name="num2"/></td>
+                    </tr>
+                </table>
+
+                <!-- Botones de operación en dos columnas -->
+                <div class="botones">
+                    <input type="submit" name="operacion" value="Sumar"/>
+                    <input type="submit" name="operacion" value="Restar"/>
+                    <input type="submit" name="operacion" value="Multiplicar"/>
+                    <input type="submit" name="operacion" value="Dividir"/>
+                </div>
+            </form>
+
+            <a href="<%=request.getContextPath()%>">Volver atrás...</a>
+        </div>
     </body>
 </html>

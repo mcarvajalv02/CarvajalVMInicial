@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/saludo.css"/>
+    </head>
+    <body>
+        <form action="../jsp/saludo.jsp" method="post">  
+            <div id="contenido">
+                <h2>Entrada de datos</h2>
+                <table>
+                    <td><label>Nombre: </label></td>
+                    <td><input type="text" name="nombre"/></td>  
+                    
+                    <td><input type="radio" value="hombre" name="sexo" checked>&nbsp;&nbsp; Hombre</td>
+                    <td><input type="radio" value="mujer" name="sexo">&nbsp;&nbsp; Mujer</td>
+                
+                </table>
+                <input type="submit" name="enviar" value="Enviar"/> 
+            </div>     
+        </form>
+    </body>
+</html>

@@ -14,7 +14,6 @@ public class CicloDeVida extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         System.out.println("Servlet CicloDeVida inicializado"); // Mensaje al iniciar el servlet
     }
 
@@ -33,7 +32,6 @@ public class CicloDeVida extends HttpServlet {
 
     @Override
     public void destroy() {
-        super.destroy();
         System.out.println("Servlet CicloDeVida destruido"); // Mensaje cuando el servlet es destruido
     }
 
