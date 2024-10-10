@@ -1,0 +1,81 @@
+/* Estilos generales */
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del formulario */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #00695c;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de los inputs */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #424242;
+    margin-right: 10px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(50% - 10px); /* Ajustar los campos para que estén alineados */
+}
+
+/* Botón */
+input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #00695c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Centra el botón */
+}
+
+input[type="submit"]:hover {
+    background-color: #004d40;
+}
+
+/* Enlace */
+a {
+    display: block;
+    color: #00695c;
+    text-decoration: none;
+    margin-top: 15px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #004d40;
+    text-decoration: underline;
+}
