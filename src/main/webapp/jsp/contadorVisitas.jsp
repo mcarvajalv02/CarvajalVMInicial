@@ -13,15 +13,10 @@
         for (int i = 0; i < cookies.length; i++) {
             if (cookies[i].getName().equals("CONTADOR")) {
                 cookie = cookies[i];
-                try {
                     String decodedValue = URLDecoder.decode(cookie.getValue(), "UTF-8");
                     contVisitas = Integer.parseInt(decodedValue);
                     contVisitas++; // Incrementar el contador
                     existe = true;
-                } catch (NumberFormatException e) {
-                    // Si el valor de la cookie no es un número válido, reiniciar contVisitas
-                    contVisitas = 1;
-                }
                 break;
             }
         }
