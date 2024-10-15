@@ -3,28 +3,34 @@
 <%
     // Leer la cookie del usuario
     String usuarioRecordado = "";
-    
+    javax.servlet.http.Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (javax.servlet.http.Cookie cookie : cookies) {
+            if (cookie.getName().equals("usuario")) {
+                usuarioRecordado = cookie.getValue();
+            }
+        }
+    }
+
     // Recoger los parámetros del formulario
     String usuario = request.getParameter("usuario");
     String contrasena = request.getParameter("contrasena");
     String recordar = request.getParameter("recordar");
 
-    // Procesar la lógica solo si se ha enviado el formulario
+    // Si el formulario ha sido enviado
     if (usuario != null && contrasena != null) {
-        if ("recordar_usuario" != null) {
-            // Si se selecciona 'Recordar usuario', crear o actualizar la cookie
-            Cookie cookie = new Cookie("usuario", usuario);
-            cookie.setMaxAge(3600); // 1 hora
+        if ("recordar".equals(recordar)) {
+            // Crear una cookie para el usuario
+            javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("usuario", usuario);
+            cookie.setMaxAge(3600);
             response.addCookie(cookie);
-            usuarioRecordado = usuario; // Actualizamos el valor en la sesión actual
         } else {
-            // Si no se selecciona 'Recordar usuario', eliminar la cookie
-            Cookie cookie = new Cookie("usuario", "");
-            cookie.setMaxAge(0); // Expira la cookie inmediatamente
+            // Si no se selecciona 'Recordar usuario', borrar la cookie
+            javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("usuario", "");
+            cookie.setMaxAge(0); // Expira la cookie
             response.addCookie(cookie);
-            usuarioRecordado = ""; // Limpiar el nombre de usuario recordado
         }
-        // Limpiar la contraseña por seguridad
+        // Borrar el campo de la contraseña
         contrasena = "";
     }
 %>
@@ -40,17 +46,16 @@
         <fieldset>
             <legend>Proceso de identificación</legend>
             <label for="usuario">Usuario:</label>
-            <!-- Prellenar el campo usuario solo si hay un nombre recordado -->
             <input type="text" id="usuario" name="usuario" value="<%= usuarioRecordado %>"><br><br>
 
             <label for="contrasena">Contraseña:</label>
             <input type="password" id="contrasena" name="contrasena" value=""><br><br>
 
-            <input type="checkbox" id="recordar" name="recordar" value="recordar_usuario" <%= !usuarioRecordado.isEmpty() ? "checked" : "" %>>
+            <input type="checkbox" id="recordar" name="recordar" <%= usuarioRecordado.isEmpty() ? "" : "checked" %>>
             <label for="recordar">Recordar usuario</label><br><br>
 
             <input type="submit" value="Enviar">
-            <a href="<%=request.getContextPath()%>">Inicio</a>
+            <input type="reset" value="Reset">
         </fieldset>
     </form>
 </body>

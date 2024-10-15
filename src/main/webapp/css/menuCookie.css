@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fondo ligeramente gris */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+h1 {
+    color: #4a90e2; /* Azul más suave */
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+form {
+    background-color: #fff; /* Blanco puro para destacar */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Más ancho para un aspecto más moderno */
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555; /* Color gris para un contraste suave */
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4a90e2; /* Azul más claro en foco */
+}
+
+/* Estilo para los botones */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los botones */
+    flex-wrap: wrap;
+    gap: 10px; /* Espaciado entre los botones */
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4a90e2; /* Azul más suave */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    flex: 1; /* Hace que los botones se expandan igualmente */
+    min-width: 45%; /* Ancho mínimo para los botones */
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color: #357ab8; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+p {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #777;
+}
+
+a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el contenedor general */
+div {
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para el contenedor */
+    margin: auto;
+    text-align: center;
+}
