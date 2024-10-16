@@ -27,7 +27,6 @@
 
             </form>
             
-            <!-- Mostrar mensaje sin out.println -->
             <p>
                 <%= request.getParameter("mensaje") != null ? request.getParameter("mensaje") : "" %>
             </p>
