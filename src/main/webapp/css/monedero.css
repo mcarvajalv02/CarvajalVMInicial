@@ -1,8 +1,8 @@
-/* Estilos generales */
 body {
     font-family: 'Verdana', sans-serif;
     background-color: #e0f7fa;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -10,7 +10,6 @@ body {
     padding: 0;
 }
 
-/* Estilos del formulario */
 form {
     background-color: #ffffff;
     padding: 30px;
@@ -27,7 +26,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Contenedor de los inputs */
 .form-group {
     display: flex;
     justify-content: space-between;
@@ -45,7 +43,7 @@ input[type="number"] {
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: calc(50% - 10px); /* Ajustar los campos para que estén alineados */
+    width: calc(50% - 10px);
 }
 
 /* Botón */
@@ -58,14 +56,13 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     display: block;
-    margin: 0 auto; /* Centra el botón */
+    margin: 0 auto;
 }
 
 input[type="submit"]:hover {
     background-color: #004d40;
 }
 
-/* Enlace */
 a {
     display: block;
     color: #00695c;
@@ -78,4 +75,35 @@ a {
 a:hover {
     color: #004d40;
     text-decoration: underline;
+}
+
+/* Estilo para las imágenes de las monedas y billetes */
+.img-monedas {
+    max-width: 120px; /* Máximo ancho de la imagen */
+    height: auto; /* Mantener proporción */
+}
+
+/* Contenedor para cada imagen y su número */
+.img-item {
+    display: flex;
+    flex-direction: column; /* Organizar verticalmente el número y la imagen */
+    align-items: center; /* Centrar los elementos */
+    margin: 10px;
+}
+
+/* Estilo del número encima de la imagen */
+.img-numero {
+    font-size: 16px;
+    font-weight: bold;
+    color: #424242;
+    margin-bottom: 5px; /* Espacio entre el número y la imagen */
+}
+
+/* Contenedor para todas las imágenes */
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que las imágenes se acomoden en varias filas */
+    margin-top: 20px;
 }
