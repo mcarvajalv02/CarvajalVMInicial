@@ -1,0 +1,109 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #5a5a5a;
+}
+
+/* Contenedor del formulario */
+.formulario {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilos para los fieldset */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+/* Estilos para las etiquetas */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Estilos para los inputs */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="submit"],
+input[type="reset"],
+button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Para incluir padding y border en el cálculo del ancho */
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para las acciones */
+.acciones {
+    display: flex;
+    justify-content: space-between;
+}
+
+.acciones input[type="button"] {
+    background-color: #28a745;
+}
+
+.acciones input[type="button"]:hover {
+    background-color: #218838;
+}
+
+/* Estilos para el mensaje */
+.mensaje {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la confirmación de eliminación */
+.confirmacion {
+    background-color: #ffc107;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.confirmacion button {
+    background-color: #dc3545;
+}
+
+.confirmacion button:hover {
+    background-color: #c82333;
+}
