@@ -39,6 +39,7 @@ Estas tareas que he voy haciendo las estoy haciendo con Java Servlets o con JSP
 
   * **Recordar usuario** (Permite recordar a un usuario en futuras visitas mediante el uso de cookies cuando le da a recordar usuario pero cuando no le da el usuario no se guarda)
   * **Menú cookie** (Permite crear, visualizar, eliminar o modificar un usuario a través de cookies)
+  * **Control de sesiones** (Nos permite crear un usuario y guardarlo en sesiones, se guarda su nombre, su fecha de nacimiento, el número de hijos y su salario.)
 
 </details>
 
